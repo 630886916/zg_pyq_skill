@@ -1,6 +1,10 @@
 # zg_pyq · 军工航空私域朋友圈文案技能
 
-> **English** — A portable skill for writing WeChat *Moments* (private-domain) copy from a single image, video frames, multiple screenshots, payment screenshots, or just a one-line brief. It bundles a defined expert persona, material-parsing rules, compliance guardrails, an adaptive output spec, a fill-in input template and worked examples. Use it as a `SKILL.md` skill, or copy `专家提示词.md` as a standalone system prompt.
+> **当前版本 v1.3**（2026-11-10）｜ **本次有更新**：新增**朋友圈防折叠设计** —— 适合的内容出稿即写成
+> 首句自足、篇幅受控、去营销腔的形态；信息交付型长文明确不做；只做内容／排版层优化，不做符号规避。
+> 完整版本记录见 [更新说明.md](更新说明.md)；**已经装过旧版的，看下方「升级到最新版本」**。
+
+> **English** — A portable skill for writing WeChat *Moments* (private-domain) copy from a single image, video frames, multiple screenshots, payment screenshots, or just a one-line brief. It bundles a defined expert persona, material-parsing rules, compliance guardrails, an adaptive output spec, a fill-in input template and worked examples. Use it as a `SKILL.md` skill, or copy `专家提示词.md` as a standalone system prompt. **Current version: v1.3** — adds anti-fold copy design (content/layout optimisation only, no detection-evasion tricks).
 
 一个面向 **微信朋友圈（私域触达、配图/视频配文、轻量互动）** 的文案技能包。
 给定素材或一句需求，输出若干条**可直接复制发布**的候选文案，并附上本次判定、合规自检与需人工确认事项。
@@ -24,6 +28,14 @@
 除日常配文的顾问口吻外，还支持**专家／官方视角**：第三人称或去人称、资讯密度高、结构感强，
 按素材自动路由到 6 类产出（价值凝练、政策解读、岗位通告、人物纪实、节点关联、服务逻辑说明）。
 判定信号与结构规则见 `skills/zg_pyq/references/06_专家官方视角类型库.md`。
+
+**v1.3 · 朋友圈防折叠设计**：适合的短文案（日常配文、单图／视频配文、轻互动、节点、P1／P5、
+中短的 P2／P6）**出稿即写成防折叠形态**——首句自足、篇幅受控、自然分段、去营销腔、候选首句信息点不同；
+`P3` 岗位通告、`P4` 人物纪实等**信息交付型长文明确不做**，保持完整清单并写明「未优化（原因）」。
+依据来自官方《微信个人账号使用规范》（2026-10-15 更新生效）、腾讯客服朋友圈规范与 2025-05-31 折叠回应；
+**官方未公布字数阈值**，第三方流传的 6 行 / 99 / 100 / 120 / 200 字互相矛盾，故不写死。
+只做内容与排版优化，**禁用零宽字符、特殊符号、防折叠码与第三方工具，也不承诺「保证不折叠」**。
+详见 `skills/zg_pyq/references/07_朋友圈防折叠设计.md`。
 
 ---
 
@@ -122,17 +134,78 @@ zg_pyq，给这张图配文
 适用：想顺带做一次轻答疑，不承诺任何结果。
 
 【本次判定】
-素材类型＝单张图片（现场照）；场景＝日常配图；发布对象＝混合；
-条数与字数＝3 条 / 30–80 字（决策表 #1）；本次按默认：…
+素材类型＝单张图片（现场照）；产出类型＝默认；视角档位＝顾问；场景＝日常配图；发布对象＝混合；
+条数与字数＝3 条 / 30–80 字（决策表 #1）；本次按默认：…；
+防折叠＝已优化（首句自足 / 篇幅受控 / 去营销腔 / 候选首句信息点不同）；
+发布节奏＝三条建议错峰发，避免同一时段连发高度相似内容。
 【合规自检】
-硬红线：通过｜基线：通过
+硬红线：通过｜基线：通过｜类型改写项：通过
+防折叠边界：仅内容/排版层，未使用符号规避或第三方工具
 【需人工确认】
 画面中设备铭牌不可辨；若原图含单位名或内部编号，请打码后再发。
 ```
 
 正文不带引号、标题、markdown、emoji、话题标签，复制即发。四个小节不可省，后三个是质检凭证。
 
-更多完整示例见 `skills/zg_pyq/references/05_示例库.md`（单图、一句话、视频截帧、聊天截图、定金位、全款位、敏感画面拦截，以及政策解读与岗位通告的专家／官向示例）。
+更多完整示例见 `skills/zg_pyq/references/05_示例库.md`（单图、一句话、视频截帧、聊天截图、定金位、全款位、敏感画面拦截、政策解读与岗位通告的专家／官向示例，以及防折叠「适合 / 不适合」示例 11–12）。
+
+---
+
+## 升级到最新版本（已装过旧版必看）
+
+技能是**本地目录，不会自动更新**。仓库更新后，已安装的同事需要把
+`~/.workbuddy/skills/zg_pyq/` 覆盖成最新版。三种方式任选一种，**都只覆盖这一个技能，不动其他技能**。
+
+### 方式 1 · 一句话让 Agent 更新（推荐）
+
+把下面整段发给 WorkBuddy 或任何能操作本地文件的 Agent：
+
+```
+请把已安装的 zg_pyq 技能更新到最新版本：https://github.com/630886916/zg_pyq_skill
+
+1. 取仓库最新内容：临时目录里已有该仓库的 clone 就执行 git pull --ff-only，
+   没有就 git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git 到临时目录。
+2. 用仓库里的 skills/zg_pyq/ 整个覆盖我的技能目录
+   ~/.workbuddy/skills/zg_pyq/（Windows：%USERPROFILE%\.workbuddy\skills\zg_pyq\）。
+3. 校验并告诉我结果：SKILL.md 的 frontmatter 仍为 name: zg_pyq、顶部版本为 v1.3、
+   references/07_朋友圈防折叠设计.md 存在、更新说明.md 首条是 v1.3。
+4. 不要删除或改动我已有的其他技能，不要运行 安装.bat，不要改目录名。
+```
+
+### 方式 2 · 手动命令覆盖
+
+```powershell
+# Windows PowerShell
+$p = "$env:TEMP\zg_pyq_skill"
+if (Test-Path "$p\.git") { git -C $p pull --ff-only } else { git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git $p }
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.workbuddy\skills\zg_pyq" | Out-Null
+Copy-Item -Recurse -Force "$p\skills\zg_pyq\*" "$env:USERPROFILE\.workbuddy\skills\zg_pyq\"
+```
+
+```bash
+# macOS / Linux / Git Bash
+P=/tmp/zg_pyq_skill
+if [ -d "$P/.git" ]; then git -C "$P" pull --ff-only; else git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git "$P"; fi
+mkdir -p ~/.workbuddy/skills/zg_pyq
+cp -r "$P"/skills/zg_pyq/. ~/.workbuddy/skills/zg_pyq/
+```
+
+### 方式 3 · 重新下载 zip 覆盖
+
+下载 `dist/zg_pyq_技能包_20261110.zip` → 完整解压 → 双击 `安装.bat`。
+脚本检测到已安装会提示「本次将覆盖更新」，覆盖同名技能，不影响其他技能。
+
+### 版本核对
+
+| 检查项 | 最新版应为 |
+|---|---|
+| `skills/zg_pyq/专家提示词.md` 顶部 | `版本：v1.3` |
+| `skills/zg_pyq/SKILL.md` 顶部 | `版本 v1.3：新增朋友圈防折叠设计` |
+| `skills/zg_pyq/references/` | 存在 `07_朋友圈防折叠设计.md` |
+| `更新说明.md` 首条 | `v1.3 · 2026-11-10 · 新增朋友圈防折叠设计` |
+
+> **升级后刷新 / 重启会话**，否则内存里仍是旧规则。
+> 若还残留 v1.0 的中文目录 `skills\军工航空朋友圈文案\`，先手动删掉，避免两个技能并存。
 
 ---
 
@@ -146,7 +219,8 @@ zg_pyq，给这张图配文
 | **默认克制基线** | 不承诺结果（含谐音变体）、不引导至风险不可控渠道、不编造事实、不蹭时政军事热点；`BASELINE_STRICT=true`，可关闭 |
 | **素材解析** | 五类素材逐一给解析步骤；截图强制脱敏提示；无素材时禁止虚构具体经历 |
 | **视角档位** | 顾问（默认，活人感）／专家（第三人称解读）／官方（去人称通告）；6 类产出类型按素材自动路由，单次可覆盖 |
-| **输出** | 固定四小节 + **16 行**自适应决策表；单次可覆盖条数与字数 |
+| **防折叠（v1.3）** | `ANTI_FOLD=auto`：适合的内容出稿即首句自足／篇幅受控／去营销腔；`P3`／`P4` 等信息交付型明确不做并写明原因。**只做内容／排版层**，禁用零宽字符、特殊符号、防折叠工具，不承诺「保证不折叠」 |
+| **输出** | 固定四小节 + **16 行**自适应决策表；单次可覆盖条数与字数；防折叠只加判定／自检两行，不新增小节 |
 | **金额截图** | 单张 <5 万且合计 <5 万 → 定金位；合计 ≥5 万 → 全款位；显式标注可覆盖；默认不写数字。详见 `references/03_素材解析规则.md` |
 
 ### 常用参数
@@ -156,6 +230,8 @@ zg_pyq，给这张图配文
 | `PERSONA_NAME` | `""` | 署名，默认不署名 |
 | `AUDIENCE` | 混合 | 战友 / 家长 / 混合 |
 | `TONE_LIVELY` | 0.6 | 活人感强度 0~1 |
+| `VOICE` / `OUTPUT_TYPE` | `auto` | 视角档位 / P1–P6 产出类型，按素材自动路由 |
+| `ANTI_FOLD` | `auto` | auto / on / off；适合即优化、不适合写明原因不做；**不做符号规避** |
 | `CANDIDATES` / `LENGTH` | `auto` | 条数 / 字数区间，走决策表 |
 | `BASELINE_STRICT` | `true` | 默认克制基线开关 |
 | `SHOW_AMOUNT` | `false` | false / blur / exact |
@@ -189,7 +265,8 @@ zg_pyq_skill/
     │   ├── 03_素材解析规则.md
     │   ├── 04_输出规范与自适应参数.md
     │   ├── 05_示例库.md
-    │   └── 06_专家官方视角类型库.md
+    │   ├── 06_专家官方视角类型库.md
+    │   └── 07_朋友圈防折叠设计.md    v1.3 能力知识库（官方依据 / 适合判定 / 禁做清单）
     └── templates/
         ├── 输入占位模板.md
         └── 输出模板.md
@@ -198,8 +275,9 @@ zg_pyq_skill/
 ## 维护规则
 
 `skills/zg_pyq/专家提示词.md` 是**唯一权威源**；`SKILL.md` 负责触发与调度，`references/` 只做展开说明。
-改规则的顺序：权威源 → `SKILL.md` 速查表 → `references/` → 在 `05_示例库.md` 补一个完整示例 → 更新 `更新说明.md` 版本号 → 重新打包 `dist/` 里的 zip。
+改规则的顺序：权威源 → `SKILL.md` 速查表 → `references/` → 在 `05_示例库.md` 补一个完整示例 → 更新 `更新说明.md` 版本号 → 重新打包 `dist/` 里的 zip → 同步 README 的「当前版本」与「升级到最新版本」核对项。
 仓库根目录的 `专家提示词.md` 是权威源的字节级副本，**不要单独手改**。
+平台折叠规则会变，但 `07_朋友圈防折叠设计.md` 里的**合规边界（禁符号规避 / 禁第三方工具 / 不承诺结果）不得随规则变动放宽**。
 
 技能 ID 为 `zg_pyq`：目录名必须与 `SKILL.md` frontmatter 的 `name: zg_pyq` 一致，改名时两处一起改。
 
