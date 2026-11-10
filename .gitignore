@@ -1,0 +1,25 @@
+# Python / 构建产物
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# 日志与临时文件
+*.log
+*.tmp
+~$*
+
+# 本地凭证（切勿提交）
+.env
+.env.*
+.git-credentials
+*_pat.txt
