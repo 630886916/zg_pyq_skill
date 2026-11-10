@@ -7,7 +7,7 @@ set "SRC=%~dp0skills\zg_pyq"
 set "DST=%USERPROFILE%\.workbuddy\skills\zg_pyq"
 
 echo.
-echo   zg_pyq · 军工航空朋友圈文案 技能包 v1.1
+echo   zg_pyq · 军工航空朋友圈文案 技能包 v1.2
 echo   ----------------------------------------
 
 if not exist "%SRC%\SKILL.md" (
