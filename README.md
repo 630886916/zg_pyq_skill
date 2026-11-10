@@ -1,10 +1,10 @@
 # zg_pyq · 军工航空私域朋友圈文案技能
 
-> **当前版本 v1.3**（2026-11-10）｜ **本次有更新**：新增**朋友圈防折叠设计** —— 适合的内容出稿即写成
-> 首句自足、篇幅受控、去营销腔的形态；信息交付型长文明确不做；只做内容／排版层优化，不做符号规避。
-> 完整版本记录见 [更新说明.md](更新说明.md)；**已经装过旧版的，看下方「升级到最新版本」**。
+> **当前版本 v1.4**（2026-11-10）｜ **本次有更新**：安装方式改为**一句话 / 一行命令装完**，
+> 不需要照着步骤操作，也不需要懂命令行；v1.3 的朋友圈防折叠能力保留不变。
+> 完整版本记录见 [更新说明.md](更新说明.md)；已经装过旧版的，看下方「升级到最新版（一句话）」。
 
-> **English** — A portable skill for writing WeChat *Moments* (private-domain) copy from a single image, video frames, multiple screenshots, payment screenshots, or just a one-line brief. It bundles a defined expert persona, material-parsing rules, compliance guardrails, an adaptive output spec, a fill-in input template and worked examples. Use it as a `SKILL.md` skill, or copy `专家提示词.md` as a standalone system prompt. **Current version: v1.3** — adds anti-fold copy design (content/layout optimisation only, no detection-evasion tricks).
+> **English** — A portable skill for writing WeChat *Moments* (private-domain) copy from a single image, video frames, multiple screenshots, payment screenshots, or just a one-line brief. It bundles a defined expert persona, material-parsing rules, compliance guardrails, an adaptive output spec, a fill-in input template and worked examples. Use it as a `SKILL.md` skill, or copy `专家提示词.md` as a standalone system prompt. **Current version: v1.4** — one-line install, plus anti-fold copy design (content/layout optimisation only, no detection-evasion tricks).
 
 一个面向 **微信朋友圈（私域触达、配图/视频配文、轻量互动）** 的文案技能包。
 给定素材或一句需求，输出若干条**可直接复制发布**的候选文案，并附上本次判定、合规自检与需人工确认事项。
@@ -41,56 +41,41 @@
 
 ## 快速开始
 
-### 1. 安装（任选一种）
+### 1. 装好只要一句话
 
-> 技能本质就是一个含 `SKILL.md` 的目录 —— 把 `skills/zg_pyq/` 放进 `~/.workbuddy/skills/zg_pyq/` 即完成安装。
-> WorkBuddy 官方的「一句话安装技能」入口只覆盖**技能市场已收录的技能**，**不支持直接输入 GitHub 地址**；
-> 但 Agent 能操作本地文件，所以下面的**方式 B** 可以让它自己完成远程安装，效果等同一键安装。
-
-**方式 A · 下载压缩包 + 双击安装（Windows，零依赖）**
-
-完整解压 `dist/zg_pyq_技能包_20261110.zip` → 双击 `安装.bat`。
-脚本会把 `skills/zg_pyq/` 复制到 `%USERPROFILE%\.workbuddy\skills\zg_pyq\`，不改动其他技能、不需要管理员权限、不需要 Python 或 ffmpeg。
-
-> `安装.bat` 为 **GBK 编码**（中文 Windows cmd 直接可运行）。用编辑器查看时请按 GBK 打开，勿转成 UTF-8。
-
-**方式 B · 一句话让 Agent 从 GitHub 远程安装（推荐）**
-
-把下面整段发给 WorkBuddy 或任何能操作本地文件的 Agent：
+复制这一行，粘进对话框：
 
 ```
-请帮我安装这个技能：https://github.com/630886916/zg_pyq_skill
-
-1. 把仓库克隆到临时目录：git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git
-2. 把仓库里的 skills/zg_pyq/ 整个文件夹复制到我的技能目录
-   ~/.workbuddy/skills/zg_pyq/（Windows：%USERPROFILE%\.workbuddy\skills\zg_pyq\）。
-3. 校验：SKILL.md 存在、frontmatter 里 name: zg_pyq，且 references/、templates/、专家提示词.md 都在。
-4. 告诉我安装结果。不要改动我已有的其他技能，也不要运行 安装.bat。
+帮我装这个技能：https://github.com/630886916/zg_pyq_skill
 ```
 
-装完刷新会话，说触发词即可。Claude Code / Cursor 等同样适用，把目标目录换成各自的 skills 目录即可。
+装完刷新一下，直接说：
 
-**方式 C · 手动命令**
-
-```powershell
-# Windows PowerShell
-git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git "$env:TEMP\zg_pyq_skill"
-New-Item -ItemType Directory -Force "$env:USERPROFILE\.workbuddy\skills" | Out-Null
-Copy-Item -Recurse -Force "$env:TEMP\zg_pyq_skill\skills\zg_pyq" "$env:USERPROFILE\.workbuddy\skills\zg_pyq"
+```
+zg_pyq 给这张图配文
 ```
 
-```bash
-# macOS / Linux / Git Bash
-git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git /tmp/zg_pyq_skill
-mkdir -p ~/.workbuddy/skills
-cp -r /tmp/zg_pyq_skill/skills/zg_pyq ~/.workbuddy/skills/
-```
+不用开终端、不用装 Node、不用记路径。它会自己下载、放进技能目录、核对版本，再把结果告诉你。
 
-**安装后自检**：`SKILL.md` 存在且 frontmatter 为 `name: zg_pyq`；`references/`、`templates/`、`专家提示词.md` 齐全；
-刷新会话后说「zg_pyq，给这张图配文」能触发。目录名保持 `zg_pyq`，**不要改成中文**。
-以上三种方式都只写技能目录，**不动其他技能、不写共享目录、不需要管理员权限**。
+**其他装法，也都是一行：**
 
-**只想用提示词、不想装技能**：直接把仓库根目录的 `专家提示词.md` 整份复制成 system prompt 即可独立工作，不依赖本仓库其他文件。
+| 你的情况 | 复制这一行 |
+|---|---|
+| **Windows，想自己装** | `irm https://raw.githubusercontent.com/630886916/zg_pyq_skill/main/install.ps1 \| iex` |
+| **Mac / Linux** | `curl -fsSL https://raw.githubusercontent.com/630886916/zg_pyq_skill/main/install.sh \| bash` |
+| **Claude Code / Cursor / Codex** | `npx -y skills add 630886916/zg_pyq_skill --skill zg_pyq -g` |
+| **完全不想碰命令行** | 下载 `dist/zg_pyq_技能包_20261110.zip` → 解压 → 双击 `安装.bat` |
+
+> Claude Code / Cursor / Codex 那行需要本机装有 Node.js，装完会落到各自的 skills 目录；
+> **WorkBuddy 用户用最上面那一句就行**，不用装 Node。
+> 终端方式只写技能目录，**不动其他技能**，不需要管理员权限、不需要 Python。
+> 如果哪一行跑不通，别纠结 —— 直接用最上面那句话让 Agent 装，或双击 `安装.bat`。
+> 想自己一步步来、换别的 Agent、或排查失败：见 [AGENT_INSTALL.md](AGENT_INSTALL.md)（写给我这类 Agent 看的，人不用读）。
+
+**装完怎么确认**：问一句「zg_pyq 你装的哪个版本」，或看 `~/.workbuddy/skills/zg_pyq/SKILL.md` 顶部版本行
+（当前应为 `v1.4`）。
+
+> **只想用提示词、不装技能**：把仓库根的 `专家提示词.md` 整份复制成 system prompt，独立可用。
 
 ### 2. 触发
 
@@ -151,61 +136,20 @@ zg_pyq，给这张图配文
 
 ---
 
-## 升级到最新版本（已装过旧版必看）
+## 升级到最新版（一句话）
 
-技能是**本地目录，不会自动更新**。仓库更新后，已安装的同事需要把
-`~/.workbuddy/skills/zg_pyq/` 覆盖成最新版。三种方式任选一种，**都只覆盖这一个技能，不动其他技能**。
-
-### 方式 1 · 一句话让 Agent 更新（推荐）
-
-把下面整段发给 WorkBuddy 或任何能操作本地文件的 Agent：
+已经装过旧版的，复制这一行：
 
 ```
-请把已安装的 zg_pyq 技能更新到最新版本：https://github.com/630886916/zg_pyq_skill
-
-1. 取仓库最新内容：临时目录里已有该仓库的 clone 就执行 git pull --ff-only，
-   没有就 git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git 到临时目录。
-2. 用仓库里的 skills/zg_pyq/ 整个覆盖我的技能目录
-   ~/.workbuddy/skills/zg_pyq/（Windows：%USERPROFILE%\.workbuddy\skills\zg_pyq\）。
-3. 校验并告诉我结果：SKILL.md 的 frontmatter 仍为 name: zg_pyq、顶部版本为 v1.3、
-   references/07_朋友圈防折叠设计.md 存在、更新说明.md 首条是 v1.3。
-4. 不要删除或改动我已有的其他技能，不要运行 安装.bat，不要改目录名。
+把 zg_pyq 技能更新到最新版：https://github.com/630886916/zg_pyq_skill
 ```
 
-### 方式 2 · 手动命令覆盖
+- **用脚本装的**：重跑安装那一行即可 —— `install.ps1` / `install.sh` 本身就是覆盖安装，等于升级。
+- **Claude Code / Cursor**：`npx -y skills update zg_pyq`，或重跑安装那行。
+- **双击 `安装.bat` 装的**：重下 zip 再双击一次，它会提示「本次将覆盖更新」。
 
-```powershell
-# Windows PowerShell
-$p = "$env:TEMP\zg_pyq_skill"
-if (Test-Path "$p\.git") { git -C $p pull --ff-only } else { git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git $p }
-New-Item -ItemType Directory -Force "$env:USERPROFILE\.workbuddy\skills\zg_pyq" | Out-Null
-Copy-Item -Recurse -Force "$p\skills\zg_pyq\*" "$env:USERPROFILE\.workbuddy\skills\zg_pyq\"
-```
-
-```bash
-# macOS / Linux / Git Bash
-P=/tmp/zg_pyq_skill
-if [ -d "$P/.git" ]; then git -C "$P" pull --ff-only; else git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git "$P"; fi
-mkdir -p ~/.workbuddy/skills/zg_pyq
-cp -r "$P"/skills/zg_pyq/. ~/.workbuddy/skills/zg_pyq/
-```
-
-### 方式 3 · 重新下载 zip 覆盖
-
-下载 `dist/zg_pyq_技能包_20261110.zip` → 完整解压 → 双击 `安装.bat`。
-脚本检测到已安装会提示「本次将覆盖更新」，覆盖同名技能，不影响其他技能。
-
-### 版本核对
-
-| 检查项 | 最新版应为 |
-|---|---|
-| `skills/zg_pyq/专家提示词.md` 顶部 | `版本：v1.3` |
-| `skills/zg_pyq/SKILL.md` 顶部 | `版本 v1.3：新增朋友圈防折叠设计` |
-| `skills/zg_pyq/references/` | 存在 `07_朋友圈防折叠设计.md` |
-| `更新说明.md` 首条 | `v1.3 · 2026-11-10 · 新增朋友圈防折叠设计` |
-
-> **升级后刷新 / 重启会话**，否则内存里仍是旧规则。
-> 若还残留 v1.0 的中文目录 `skills\军工航空朋友圈文案\`，先手动删掉，避免两个技能并存。
+升级后**刷新或重启会话**才生效。核对版本：问一句「zg_pyq 你装的哪个版本」，当前应为 `v1.4`。
+若还残留 v1.0 的中文目录 `skills\军工航空朋友圈文案\`，先手动删掉，避免两个技能并存。
 
 ---
 
@@ -249,11 +193,14 @@ cp -r "$P"/skills/zg_pyq/. ~/.workbuddy/skills/zg_pyq/
 ```
 zg_pyq_skill/
 ├── README.md                       本文件（使用方法）
+├── install.ps1                     Windows 一行安装 / 升级（irm … | iex）
+├── install.sh                      Mac / Linux 一行安装 / 升级
+├── AGENT_INSTALL.md                给 Agent 看的安装说明（一句话安装时它会读）
 ├── LICENSE                         MIT
 ├── 专家提示词.md                    可直接整份粘贴的独立提示词
 ├── 使用说明.md                      安装、输入、输出、合规、维护
 ├── 更新说明.md                      版本与规则来源
-├── 安装.bat                        Windows 一键安装（GBK）
+├── 安装.bat                        Windows 双击安装（GBK，zip 内）
 ├── dist/
 │   └── zg_pyq_技能包_20261110.zip   可直接下载分发的完整包
 └── skills/zg_pyq/
@@ -275,7 +222,8 @@ zg_pyq_skill/
 ## 维护规则
 
 `skills/zg_pyq/专家提示词.md` 是**唯一权威源**；`SKILL.md` 负责触发与调度，`references/` 只做展开说明。
-改规则的顺序：权威源 → `SKILL.md` 速查表 → `references/` → 在 `05_示例库.md` 补一个完整示例 → 更新 `更新说明.md` 版本号 → 重新打包 `dist/` 里的 zip → 同步 README 的「当前版本」与「升级到最新版本」核对项。
+改规则的顺序：权威源 → `SKILL.md` 速查表 → `references/` → 在 `05_示例库.md` 补一个完整示例 → 更新 `更新说明.md` 版本号 → 重新打包 `dist/` 里的 zip → 同步 README 的「当前版本」与 `AGENT_INSTALL.md` 的版本校验项。
+改了 `install.ps1` / `install.sh` 要**本地实测一次**（可用 `ZG_PYQ_URL` 指向本地 zip、`ZG_PYQ_DIR` 指向临时目录，避免污染真实技能目录）。
 仓库根目录的 `专家提示词.md` 是权威源的字节级副本，**不要单独手改**。
 平台折叠规则会变，但 `07_朋友圈防折叠设计.md` 里的**合规边界（禁符号规避 / 禁第三方工具 / 不承诺结果）不得随规则变动放宽**。
 
