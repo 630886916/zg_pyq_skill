@@ -25,14 +25,54 @@
 
 ## 快速开始
 
-### 1. 安装
+### 1. 安装（任选一种）
 
-**Windows（一键）**：完整解压 `dist/zg_pyq_技能包_20261110.zip` → 双击 `安装.bat`。
+> 技能本质就是一个含 `SKILL.md` 的目录 —— 把 `skills/zg_pyq/` 放进 `~/.workbuddy/skills/zg_pyq/` 即完成安装。
+> WorkBuddy 官方的「一句话安装技能」入口只覆盖**技能市场已收录的技能**，**不支持直接输入 GitHub 地址**；
+> 但 Agent 能操作本地文件，所以下面的**方式 B** 可以让它自己完成远程安装，效果等同一键安装。
+
+**方式 A · 下载压缩包 + 双击安装（Windows，零依赖）**
+
+完整解压 `dist/zg_pyq_技能包_20261110.zip` → 双击 `安装.bat`。
 脚本会把 `skills/zg_pyq/` 复制到 `%USERPROFILE%\.workbuddy\skills\zg_pyq\`，不改动其他技能、不需要管理员权限、不需要 Python 或 ffmpeg。
 
-**手动 / 其他平台**：把 `skills/zg_pyq/` 整个文件夹复制到你的 Agent 技能目录即可。
-
 > `安装.bat` 为 **GBK 编码**（中文 Windows cmd 直接可运行）。用编辑器查看时请按 GBK 打开，勿转成 UTF-8。
+
+**方式 B · 一句话让 Agent 从 GitHub 远程安装（推荐）**
+
+把下面整段发给 WorkBuddy 或任何能操作本地文件的 Agent：
+
+```
+请帮我安装这个技能：https://github.com/630886916/zg_pyq_skill
+
+1. 把仓库克隆到临时目录：git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git
+2. 把仓库里的 skills/zg_pyq/ 整个文件夹复制到我的技能目录
+   ~/.workbuddy/skills/zg_pyq/（Windows：%USERPROFILE%\.workbuddy\skills\zg_pyq\）。
+3. 校验：SKILL.md 存在、frontmatter 里 name: zg_pyq，且 references/、templates/、专家提示词.md 都在。
+4. 告诉我安装结果。不要改动我已有的其他技能，也不要运行 安装.bat。
+```
+
+装完刷新会话，说触发词即可。Claude Code / Cursor 等同样适用，把目标目录换成各自的 skills 目录即可。
+
+**方式 C · 手动命令**
+
+```powershell
+# Windows PowerShell
+git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git "$env:TEMP\zg_pyq_skill"
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.workbuddy\skills" | Out-Null
+Copy-Item -Recurse -Force "$env:TEMP\zg_pyq_skill\skills\zg_pyq" "$env:USERPROFILE\.workbuddy\skills\zg_pyq"
+```
+
+```bash
+# macOS / Linux / Git Bash
+git clone --depth 1 https://github.com/630886916/zg_pyq_skill.git /tmp/zg_pyq_skill
+mkdir -p ~/.workbuddy/skills
+cp -r /tmp/zg_pyq_skill/skills/zg_pyq ~/.workbuddy/skills/
+```
+
+**安装后自检**：`SKILL.md` 存在且 frontmatter 为 `name: zg_pyq`；`references/`、`templates/`、`专家提示词.md` 齐全；
+刷新会话后说「zg_pyq，给这张图配文」能触发。目录名保持 `zg_pyq`，**不要改成中文**。
+以上三种方式都只写技能目录，**不动其他技能、不写共享目录、不需要管理员权限**。
 
 **只想用提示词、不想装技能**：直接把仓库根目录的 `专家提示词.md` 整份复制成 system prompt 即可独立工作，不依赖本仓库其他文件。
 
