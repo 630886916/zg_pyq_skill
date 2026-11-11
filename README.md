@@ -1,11 +1,14 @@
 ﻿# zg-pyq · 军工航空朋友圈营销文案技能
 
-> **当前版本 v2.0**（2026-11-10）｜ **本次重大更新：立场重构** —— 从「客观说明素材」改为
-> **招生方用素材做转化**。素材只是钩子，文案目的是积累信任、激起报名欲、制造紧迫感；
-> 输出结构精简为三小节；放开承诺 / 限量 / emoji / 话题标签。
+> **当前版本 v2.1.0**（2026-11-11）｜ **本次更新：新增「工序 / 岗位点名分流闸门」** ——
+> 默认不再把铆装、装配、铺贴、无损检测等具体工序 / 岗位名写进文案；仅岗位介绍、岗位清单、
+> 政策紧缺目录类可点，节日海报 / 参观 / 报名 / 办入住 / 入职等素材一律不点，
+> 改从「吸引人、激发咨询」的角度写。详见 [更新说明.md](更新说明.md)。
+> v2.0 为立场重构：从「客观说明素材」改为**招生方用素材做转化**，输出精简为三小节，
+> 放开承诺 / 限量 / emoji / 话题标签。
 > 完整版本记录见 [更新说明.md](更新说明.md)；已经装过旧版的，看下方「升级到最新版（一句话）」。
 
-> **English** — A portable skill for writing WeChat *Moments* copy **as an admissions/marketing voice** for vocational aviation-training programs. Given an image, video, policy screenshot, job spec, or a one-line brief, it produces 1–3 publish-ready captions built to build trust, trigger sign-ups and create urgency — not to describe the material. Six conversion patterns (on-site, policy, quota notice, placement proof, opinion, seasonal), a hook library, layout rules, and anti-fold optimisation. Hard red line: classified information and personal privacy. **Current version: v2.0.**
+> **English** — A portable skill for writing WeChat *Moments* copy **as an admissions/marketing voice** for vocational aviation-training programs. Given an image, video, policy screenshot, job spec, or a one-line brief, it produces 1–3 publish-ready captions built to build trust, trigger sign-ups and create urgency — not to describe the material. Six conversion patterns (on-site, policy, quota notice, placement proof, opinion, seasonal), a hook library, layout rules, and anti-fold optimisation. Hard red line: classified information and personal privacy. **Current version: v2.1.0.**
 
 一个面向 **微信朋友圈（私域招生）** 的文案技能包。
 给定素材或一句需求，输出 1–3 条**可直接复制发布**的文案，已排好版（分段、emoji、话题标签）。
@@ -91,7 +94,7 @@ zg-pyq 给这张图配文
 > 想自己一步步来、换别的 Agent、或排查失败：见 [AGENT_INSTALL.md](AGENT_INSTALL.md)（写给我这类 Agent 看的，人不用读）。
 
 **装完怎么确认**：问一句「zg-pyq 你装的哪个版本」，或看 `~/.workbuddy/skills/zg-pyq/SKILL.md` 顶部版本行
-（当前应为 `v2.0`；也可看 `references/08_转化文案类型库.md` 是否存在）。
+（当前应为 `v2.1.0`；也可看 `references/08_转化文案类型库.md` 是否存在）。
 
 > **只想用提示词、不装技能**：把仓库根的 `专家提示词.md` 整份复制成 system prompt，独立可用。
 
@@ -196,7 +199,7 @@ zg-pyq，给这张图配文
 - **Claude Code / Cursor**：`npx -y skills update zg-pyq`，或重跑安装那行。
 - **双击 `安装.bat` 装的**：重下 zip 再双击一次，它会提示「本次将覆盖更新」。
 
-升级后**刷新或重启会话**才生效。核对版本：问一句「zg-pyq 你装的哪个版本」，当前应为 `v2.0`。
+升级后**刷新或重启会话**才生效。核对版本：问一句「zg-pyq 你装的哪个版本」，当前应为 `v2.1.0`。
 若还残留 v1.0 的中文目录 `skills\军工航空朋友圈营销文案\`，先手动删掉，避免两个技能并存。
 
 ---
