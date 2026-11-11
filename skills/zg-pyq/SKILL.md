@@ -12,6 +12,20 @@ description: >
   配图文案、配视频文案、军工朋友圈、给这张图配文、金额截图配文、帮我发条朋友圈、
   政策解读配文、岗位通告、名额、开班、报到、防折叠、朋友圈折叠。
 license: MIT
+version: "2.0"
+display_name: 军工航空朋友圈营销文案
+display_name_en: Military Aviation WeChat Moments Marketing Copy
+description_zh: >
+  为军工航空技术培训与军工方向就业的招生方，生成可直接复制发布的微信朋友圈转化文案。
+  立场是招生方与培训方，素材只作钩子；输出含钩子、事实、价值、行动四段，覆盖现场、政策、
+  名额、去向、观点、节点六类转化，允许承诺、限量催单、emoji 与话题标签；唯一不可关闭的
+  硬红线是禁止涉密内容与泄露他人隐私。
+description_en: >
+  Generates ready-to-post WeChat Moments marketing copy for recruiters and training providers
+  in military-aviation and veteran-employment. Adopts the seller's voice, treats materials as
+  hooks, and outputs hook-fact-value-action copy across six conversion types (on-site, policy,
+  quota, outcomes, opinion, occasion). Promises, scarcity, emoji and hashtags are allowed; the
+  only hard red line is no classified content and no disclosure of others' private information.
 metadata:
   display_name: 军工航空朋友圈营销文案
   version: "2.0"
