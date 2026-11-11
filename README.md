@@ -1,4 +1,4 @@
-# zg_pyq · 军工航空招生朋友圈文案技能
+﻿# zg-pyq · 军工航空朋友圈营销文案技能
 
 > **当前版本 v2.0**（2026-11-10）｜ **本次重大更新：立场重构** —— 从「客观说明素材」改为
 > **招生方用素材做转化**。素材只是钩子，文案目的是积累信任、激起报名欲、制造紧迫感；
@@ -13,7 +13,7 @@
 技能面向的场景是「军工航空技术培训 / 军工方向就业」的**招生**。
 **立场是招生方与培训方，不是旁白**：你发一段学员报到视频，它不会写「视频中几位学员正在办理入住」，
 而是写「今天又来了 9 位战友，最小的 19 岁，最大的 34 岁……这批 30 个名额，还剩 6 个」。
-其他行业可按 `skills/zg_pyq/专家提示词.md` 里的参数自行调整。
+其他行业可按 `skills/zg-pyq/专家提示词.md` 里的参数自行调整。
 
 ---
 
@@ -43,13 +43,13 @@
 | M5 认知观点 | 纯文字需求、行业观察 | 卖赛道，用观点掰正犹豫 |
 | M6 节点借势 | 退伍季、开学季、节后、节日 | 把时间节点变成决策节点 |
 
-判定信号、结构骨架、钩子库与排版细则见 `skills/zg_pyq/references/08_转化文案类型库.md`。
+判定信号、结构骨架、钩子库与排版细则见 `skills/zg-pyq/references/08_转化文案类型库.md`。
 
 **朋友圈防折叠**：适合的内容（现场、政策、去向、观点、节点、金额截图）**出稿即写成防折叠形态**
 ——首行自足、篇幅受控、自然分段、三条首行信息点不同；`M3` 岗位通告等长清单**明确不做**，保持完整。
 依据官方《微信个人账号使用规范》（2026-10-15 生效）与腾讯客服口径；**官方未公布字数阈值**，故不写死。
 只做内容与排版优化，**禁用零宽字符、特殊符号、防折叠码与第三方工具，也不承诺「保证不折叠」**。
-详见 `skills/zg_pyq/references/07_朋友圈防折叠设计.md`。
+详见 `skills/zg-pyq/references/07_朋友圈防折叠设计.md`。
 
 **能力边界**：允许承诺（包安置 / 保就业 / 推荐入职）、允许限量催单（只招 30 人 / 剩 6 个）、
 允许晒报名与签约、允许 emoji 与话题标签、允许紧迫与对比。
@@ -70,7 +70,7 @@
 装完刷新一下，直接说：
 
 ```
-zg_pyq 给这张图配文
+zg-pyq 给这张图配文
 ```
 
 不用开终端、不用装 Node、不用记路径。它会自己下载、放进技能目录、核对版本，再把结果告诉你。
@@ -81,8 +81,8 @@ zg_pyq 给这张图配文
 |---|---|
 | **Windows，想自己装** | `irm https://raw.githubusercontent.com/630886916/zg_pyq_skill/main/install.ps1 \| iex` |
 | **Mac / Linux** | `curl -fsSL https://raw.githubusercontent.com/630886916/zg_pyq_skill/main/install.sh \| bash` |
-| **Claude Code / Cursor / Codex** | `npx -y skills add 630886916/zg_pyq_skill --skill zg_pyq -g` |
-| **完全不想碰命令行** | 下载 `dist/zg_pyq_技能包_20261110.zip` → 解压 → 双击 `安装.bat` |
+| **Claude Code / Cursor / Codex** | `npx -y skills add 630886916/zg_pyq_skill --skill zg-pyq -g` |
+| **完全不想碰命令行** | 下载 `dist/zg-pyq_技能包_20261110.zip` → 解压 → 双击 `安装.bat` |
 
 > Claude Code / Cursor / Codex 那行需要本机装有 Node.js，装完会落到各自的 skills 目录；
 > **WorkBuddy 用户用最上面那一句就行**，不用装 Node。
@@ -90,7 +90,7 @@ zg_pyq 给这张图配文
 > 如果哪一行跑不通，别纠结 —— 直接用最上面那句话让 Agent 装，或双击 `安装.bat`。
 > 想自己一步步来、换别的 Agent、或排查失败：见 [AGENT_INSTALL.md](AGENT_INSTALL.md)（写给我这类 Agent 看的，人不用读）。
 
-**装完怎么确认**：问一句「zg_pyq 你装的哪个版本」，或看 `~/.workbuddy/skills/zg_pyq/SKILL.md` 顶部版本行
+**装完怎么确认**：问一句「zg-pyq 你装的哪个版本」，或看 `~/.workbuddy/skills/zg-pyq/SKILL.md` 顶部版本行
 （当前应为 `v2.0`；也可看 `references/08_转化文案类型库.md` 是否存在）。
 
 > **只想用提示词、不装技能**：把仓库根的 `专家提示词.md` 整份复制成 system prompt，独立可用。
@@ -100,13 +100,13 @@ zg_pyq 给这张图配文
 在对话里说以下任一句：
 
 ```
-zg_pyq，给这张图配文
+zg-pyq，给这张图配文
 用军工朋友圈文案技能，给这张图配文
 帮我发条朋友圈
 金额截图配文
 ```
 
-完整触发词见 `skills/zg_pyq/SKILL.md` 的 frontmatter。
+完整触发词见 `skills/zg-pyq/SKILL.md` 的 frontmatter。
 
 ### 3. 最小输入
 
@@ -123,7 +123,7 @@ zg_pyq，给这张图配文
 【需求】：招录季快到了，想发一条提醒性质的朋友圈
 ```
 
-完整填空模板见 `skills/zg_pyq/templates/输入占位模板.md`，**所有占位都可留空**。
+完整填空模板见 `skills/zg-pyq/templates/输入占位模板.md`，**所有占位都可留空**。
 
 ### 4. 输出长什么样
 
@@ -179,7 +179,7 @@ zg_pyq，给这张图配文
 三条候选分别是**现场 / 观点 / 名额**三个角度，正文已排版，整段复制就能发。
 判定三行、自检两行，就是全部附加信息 —— 不写产出类型、不写条数依据、不写发布节奏、不写需人工确认。
 
-更多完整示例见 `skills/zg_pyq/references/05_示例库.md`（报到现场、政策借势、名额通告、去向背书、
+更多完整示例见 `skills/zg-pyq/references/05_示例库.md`（报到现场、政策借势、名额通告、去向背书、
 一句话、节点借势、聊天截图、金额截图共 8 个，全为中性自造内容）。
 
 ---
@@ -189,15 +189,15 @@ zg_pyq，给这张图配文
 已经装过旧版的，复制这一行：
 
 ```
-把 zg_pyq 技能更新到最新版：https://github.com/630886916/zg_pyq_skill
+把 zg-pyq 技能更新到最新版：https://github.com/630886916/zg_pyq_skill
 ```
 
 - **用脚本装的**：重跑安装那一行即可 —— `install.ps1` / `install.sh` 本身就是覆盖安装，等于升级。
-- **Claude Code / Cursor**：`npx -y skills update zg_pyq`，或重跑安装那行。
+- **Claude Code / Cursor**：`npx -y skills update zg-pyq`，或重跑安装那行。
 - **双击 `安装.bat` 装的**：重下 zip 再双击一次，它会提示「本次将覆盖更新」。
 
-升级后**刷新或重启会话**才生效。核对版本：问一句「zg_pyq 你装的哪个版本」，当前应为 `v2.0`。
-若还残留 v1.0 的中文目录 `skills\军工航空朋友圈文案\`，先手动删掉，避免两个技能并存。
+升级后**刷新或重启会话**才生效。核对版本：问一句「zg-pyq 你装的哪个版本」，当前应为 `v2.0`。
+若还残留 v1.0 的中文目录 `skills\军工航空朋友圈营销文案\`，先手动删掉，避免两个技能并存。
 
 ---
 
@@ -252,8 +252,8 @@ zg_pyq_skill/
 ├── 更新说明.md                      版本与规则来源
 ├── 安装.bat                        Windows 双击安装（GBK，zip 内）
 ├── dist/
-│   └── zg_pyq_技能包_20261110.zip   可直接下载分发的完整包
-└── skills/zg_pyq/
+│   └── zg-pyq_技能包_20261110.zip   可直接下载分发的完整包
+└── skills/zg-pyq/
     ├── SKILL.md                    技能入口（触发词 / 工作流 / 速查）
     ├── 专家提示词.md                ★ 唯一权威规则源
     ├── references/
@@ -272,7 +272,7 @@ zg_pyq_skill/
 
 ## 维护规则
 
-`skills/zg_pyq/专家提示词.md` 是**唯一权威源**；`SKILL.md` 负责触发与调度，`references/` 只做展开说明。
+`skills/zg-pyq/专家提示词.md` 是**唯一权威源**；`SKILL.md` 负责触发与调度，`references/` 只做展开说明。
 改规则的顺序：权威源 → `SKILL.md` 速查表 → `references/` → 在 `05_示例库.md` 补一个完整示例 → 更新 `更新说明.md` 版本号 → 重新打包 `dist/` 里的 zip → 同步 README 的「当前版本」与 `AGENT_INSTALL.md` 的版本校验项。
 改了 `install.ps1` / `install.sh` 要**本地实测一次**（可用 `ZG_PYQ_URL` 指向本地 zip、`ZG_PYQ_DIR` 指向临时目录，避免污染真实技能目录）。
 仓库根目录的 `专家提示词.md` 是权威源的字节级副本，**不要单独手改**。
@@ -280,7 +280,7 @@ zg_pyq_skill/
 平台折叠规则会变，但 `07_朋友圈防折叠设计.md` 里的**合规边界（禁符号规避 / 禁第三方工具 / 不承诺结果）不得随规则变动放宽**。
 `MARKETING / EMOJI / HASHTAG / URGENCY` 可以按业务需要开关，**但涉密与隐私这条硬红线不能放宽**。
 
-技能 ID 为 `zg_pyq`：目录名必须与 `SKILL.md` frontmatter 的 `name: zg_pyq` 一致，改名时两处一起改。
+技能 ID 为 `zg-pyq`：目录名必须与 `SKILL.md` frontmatter 的 `name: zg-pyq` 一致，改名时两处一起改。
 
 ## 适用范围与注意
 

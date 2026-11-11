@@ -1,9 +1,9 @@
-﻿# zg_pyq 技能 · Windows 一键安装 / 升级
+﻿# zg-pyq 技能 · Windows 一键安装 / 升级
 #
 # 用法（复制这一行到 PowerShell 回车）：
 #   irm https://raw.githubusercontent.com/630886916/zg_pyq_skill/main/install.ps1 | iex
 #
-# 只安装 zg_pyq 这一个技能，不删除、不修改其他技能。
+# 只安装 zg-pyq 这一个技能，不删除、不修改其他技能。
 # 想装到别处：先设环境变量 ZG_PYQ_DIR，再执行上面的命令。
 
 $ErrorActionPreference = 'Stop'
@@ -14,12 +14,12 @@ $Repo   = '630886916/zg_pyq_skill'
 $Branch = 'main'
 
 if ($env:ZG_PYQ_DIR) { $Dest = $env:ZG_PYQ_DIR }
-else { $Dest = Join-Path $env:USERPROFILE '.workbuddy\skills\zg_pyq' }
+else { $Dest = Join-Path $env:USERPROFILE '.workbuddy\skills\zg-pyq' }
 
-$Tmp = Join-Path $env:TEMP ('zg_pyq_' + [guid]::NewGuid().ToString('N'))
+$Tmp = Join-Path $env:TEMP ('zg-pyq_' + [guid]::NewGuid().ToString('N'))
 
 Write-Host ""
-Write-Host "  zg_pyq · 朋友圈文案技能" -ForegroundColor Cyan
+Write-Host "  zg-pyq · 朋友圈文案技能" -ForegroundColor Cyan
 Write-Host "  ----------------------------------------" -ForegroundColor DarkGray
 
 try {
@@ -37,10 +37,10 @@ try {
 
     $Src = $null
     foreach ($d in (Get-ChildItem -Path $Tmp -Directory)) {
-        $cand = Join-Path $d.FullName 'skills\zg_pyq'
+        $cand = Join-Path $d.FullName 'skills\zg-pyq'
         if (Test-Path (Join-Path $cand 'SKILL.md')) { $Src = $cand; break }
     }
-    if (-not $Src) { throw '安装包里没有找到 skills\zg_pyq\SKILL.md' }
+    if (-not $Src) { throw '安装包里没有找到 skills\zg-pyq\SKILL.md' }
 
     Write-Host "  [3/3] 安装到 $Dest ..."
     $Parent = Split-Path $Dest -Parent
@@ -55,7 +55,7 @@ try {
     $SkillMd = Join-Path $Dest 'SKILL.md'
     if (-not (Test-Path $SkillMd)) { throw '安装后缺少 SKILL.md' }
     $Head = (Get-Content -Path $SkillMd -TotalCount 15 -Encoding UTF8) -join "`n"
-    if ($Head -notmatch 'name:\s*zg_pyq') { throw 'SKILL.md 的 name 不是 zg_pyq' }
+    if ($Head -notmatch 'name:\s*zg-pyq') { throw 'SKILL.md 的 name 不是 zg-pyq' }
 
     $Ver = ''
     $SkillHead = (Get-Content -Path $SkillMd -TotalCount 20 -Encoding UTF8) -join "`n"
@@ -76,7 +76,7 @@ try {
     else { Write-Host "       防折叠模块：未包含（可能下载到了旧版）" -ForegroundColor Yellow }
     Write-Host ""
     Write-Host "  下一步：刷新或重启会话，然后直接说 ——" -ForegroundColor Cyan
-    Write-Host "       zg_pyq 给这张图配文" -ForegroundColor Yellow
+    Write-Host "       zg-pyq 给这张图配文" -ForegroundColor Yellow
     Write-Host ""
 }
 catch {
