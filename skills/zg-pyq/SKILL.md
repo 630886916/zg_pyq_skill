@@ -12,7 +12,7 @@ description: >
   配图文案、配视频文案、军工朋友圈、给这张图配文、金额截图配文、帮我发条朋友圈、
   政策解读配文、岗位通告、名额、开班、报到、防折叠、朋友圈折叠。
 license: MIT
-version: "2.0"
+version: "2.0.0"
 display_name: 军工航空朋友圈营销文案
 display_name_en: Military Aviation WeChat Moments Marketing Copy
 description_zh: >
@@ -28,7 +28,7 @@ description_en: >
   only hard red line is no classified content and no disclosure of others' private information.
 metadata:
   display_name: 军工航空朋友圈营销文案
-  version: "2.0"
+  version: "2.0.0"
 ---
 
 # zg-pyq · 军工航空朋友圈营销文案
